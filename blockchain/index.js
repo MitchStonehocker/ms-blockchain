@@ -1,4 +1,4 @@
-// blockchain.js
+// blockchain//index.js || blockchain/blockchain.js
 
 const Block = require('./block')
 
@@ -31,6 +31,24 @@ class Blockchain {
       }
     }
     return true
+  }
+
+  replaceChain (newChain) {
+    if (newChain.length <= this.chain.length) {
+      console.log(
+        '>>>-Blockchain-replaceChain->',
+        'newChain is not longer than this.chain'
+      )
+      return
+    } else if (!this.isValidChain(newChain)) {
+      console.log('>>>-Blockchain-replaceChain->', 'newChain is not not valid')
+      return
+    }
+    console.log(
+      '>>>-Blockchain-replaceChain->',
+      'replacing chain with newChain'
+    )
+    this.chain = newChain
   }
 }
 
